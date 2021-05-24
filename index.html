@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Rating</title>
+    <style>
+      body {
+        background-color: rgb(48, 136, 107);
+        background: linear-gradient(90deg, green, red, orange, green);
+      }
+      h1,
+      p,
+      .next {
+        background-color: rgb(174, 194, 187);
+        text-align: center;
+        padding: 4px;
+        color: rgb(34, 17, 5);
+      }
+      .Random__pics {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+      }
+      .Random__pics > img {
+        box-shadow: 2px 2px 5px 2px rgb(65, 47, 47);
+        margin-bottom: 15px;
+        border-radius: 20px;
+        /* height: 40em; */
+      }
+      .stars {
+        display: flex;
+
+        justify-content: center;
+        align-content: center;
+      }
+      .stars > li {
+        list-style: none;
+        margin: 5px;
+        color: white;
+        font-size: 40px;
+      }
+      .stars > li:hover{
+          color: rgb(20, 196, 14);
+      }
+      .wrp {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+      }
+      .orang {color:#7685;}
+      .yelow {color:yellow;}
+    </style>
+  </head>
+  <body>
+    <h1>
+      <i class="fa fa-laptop" style="font-size: 60px; color: red"></i>Rate your
+      web site
+    </h1>
+    <h1>Beautiful Random Pictures You will love After watching</h1>
+    <div class="star-rating">
+      <div class="Random__pics">
+        <img src="https://picsum.photos/400/300/?random" alt="pics" />
+        <img src="https://picsum.photos/400/300/?random" alt="pics" />
+        <img src="https://picsum.photos/400/300/?random" alt="pics" />
+      </div>
+
+      <!-- <div class="star-rating">
+        <div class="Random__pics">
+          <img src="https://picsum.photos/400/300/?random" alt="pics" />
+          <img src="https://picsum.photos/400/300/?random" alt="pics" />
+          <img src="https://picsum.photos/400/300/?random" alt="pics" />
+        </div> -->
+
+        
+      <ul class="stars">
+        <li class="star"><i class="fa fa-star"></i></li>
+        <li class="star"><i class="fa fa-star"></i></li>
+        <li class="star"><i class="fa fa-star"></i></li>
+        <li class="star"><i class="fa fa-star"></i></li>
+        <li class="star"><i class="fa fa-star"></i></li>
+      </ul>
+      <div class="wrp">
+        <p class="output" id="x">Rating</p>
+        <br />
+        <button class="next" onclick="nextPage()">Next</button>
+      </div>
+    </div>
+    <script>
+      var str = document.querySelectorAll(".star");
+      var output = document.querySelectorAll(".output")
+      var y=document.getElementById("x")
+       
+      for (i = 0; i < str.length; i++) {
+        str[i].starValue = i + 1;
+        //     str[i].addEventListener("click",()=>{
+        //     console.log(`i am click`)
+        // })
+
+        const events = ["click", "mouseover", "mouseout"];
+        events.forEach(function (e) {
+          // console.log(e)
+          str[i].addEventListener(e, showRating);
+        });
+      }
+      function showRating(e) {
+        let type = e.type;
+        //   console.log(type)
+        let starValue = this.starValue;
+        // console.log(starValue)
+        if (type === "click"){
+            if(starValue>=1){
+                x.innerHTML=`Your Rating is ${starValue} "Thank You !"`;
+            }
+            
+        }
+        
+
+
+
+        str.forEach(function (elem, ind) {
+          if (type === "click") {
+            if (ind < starValue) {
+              elem.classList.add("orang");
+            } else {
+              elem.classList.remove("orang");
+            }
+          }
+          //console.log(output)
+          if (type === "mouseover") {
+            if (ind < starValue) {
+              elem.classList.add("yelow");
+            } else {
+              elem.classList.remove("yelow");
+            }
+          }
+
+          if (type === "mouseout") {
+            elem.classList.remove("yelow");
+          }
+        });
+      }
+      function nextPage(){
+          window.location.reload();
+      }
+    </script>
+  </body>
+</html>
